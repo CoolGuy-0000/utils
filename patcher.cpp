@@ -94,7 +94,7 @@ int main(int argc, char* argv[]) {
 
 	  // Parse PE headers
 	  g_pDosHeader = (IMAGE_DOS_HEADER*)g_filedll;
-    g_pNtHeader = (IMAGE_NT_HEADERS64*)((BYTE*)g_filedll + g_pDosHeader->e_lfanew);
+	  g_pNtHeader = (IMAGE_NT_HEADERS64*)((BYTE*)g_filedll + g_pDosHeader->e_lfanew);
 	  g_pSectionHeaders = (IMAGE_SECTION_HEADER*)(g_pNtHeader + 1);
 
     for(DWORD i = 0; i < g_pNtHeader->FileHeader.NumberOfSections; i++) {
@@ -102,7 +102,7 @@ int main(int argc, char* argv[]) {
             g_pCodeSectionHeader = &g_pSectionHeaders[i];
             break;
         }
-	  }
+	}
 
   	snprintf(g_szBackupFile, sizeof(g_szBackupFile), "%s.bak", g_szDllFile);
   
@@ -118,8 +118,8 @@ int main(int argc, char* argv[]) {
         else fprintf(stdout, "Failed to patch DLL: %s\n", g_szDllFile);
     }
 
-	  FlushViewOfFile(g_filedll, 0);
-	  UnmapViewOfFile(g_filedll);
+	FlushViewOfFile(g_filedll, 0);
+	UnmapViewOfFile(g_filedll);
     CloseHandle(g_hDLLFileMap);
     CloseHandle(g_hDLLFile);
     return 0;
