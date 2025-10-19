@@ -1,0 +1,4 @@
+["Load" "E:\Amalgamx64ReleaseAVX2.dll"]
+["Load" "E:\server.dll"]
+["Unload" "replay.dll"]
+["Key" "Value"]
